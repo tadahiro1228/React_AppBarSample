@@ -1,0 +1,16 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.AppBar {
+  flex-grow: 1;
+}
+
+.menuButton {
+  margin-right: 10px;
+}
+
+.MenuIcon {
+  color: white;
+}
