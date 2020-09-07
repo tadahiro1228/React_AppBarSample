@@ -1,6 +1,6 @@
 import React, { useState, Fragment } from "react";
 import clsx from "clsx";
-import { Router, Route, Link } from "react-router-dom";
+import { Router, Route, Link, Switch } from "react-router-dom";
 import { createBrowserHistory } from "history";
 
 import { withStyles } from "@material-ui/core/styles";
@@ -13,6 +13,8 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
+import Fade from "@material-ui/core/Fade";
+import Paper from "@material-ui/core/Paper";
 
 import Home from "./pages/Home";
 import Page from "./pages/Page";
@@ -62,59 +64,45 @@ const MyToolbar = withStyles(styles)(({ classes, title, onMenuClick }) => (
   </Fragment>
 ));
 
-const MyDrawer = withStyles(styles)(
-  ({ classes, variant, open, onClose, onItemClick }) => (
-    <Router history={history}>
-      <Drawer
-        variant={variant}
-        open={open}
-        onClose={onClose}
-        classes={{
-          paper: classes.drawerPaper
-        }}
-      >
-        <div
-          className={clsx({
-            [classes.toolbarMargin]: variant === "persistent"
-          })}
-        />
-        <List>
-          <ListItem button component={Link} to="/" onClick={onItemClick()}>
-            <ListItemText>Home</ListItemText>
-          </ListItem>
-          <ListItem button component={Link} to="/Page1" onClick={onItemClick()}>
-            <ListItemText>PC管理台帳</ListItemText>
-          </ListItem>
-          <ListItem button component={Link} to="/Page2" onClick={onItemClick()}>
-            <ListItemText>PC持出台帳</ListItemText>
-          </ListItem>
-          <ListItem button component={Link} to="/Page3" onClick={onItemClick()}>
-            <ListItemText>ポータブルストレージ管理台帳</ListItemText>
-          </ListItem>
-          <ListItem button component={Link} to="/Page4" onClick={onItemClick()}>
-            <ListItemText>ユーザ管理</ListItemText>
-          </ListItem>
-        </List>
-      </Drawer>
-      <main className={classes.content}>
-        <Route exact path="/">
-          <Home />
-        </Route>
-        <Route path="/Page1">
-          <Page title="Page1" />
-        </Route>
-        <Route path="/Page2">
-          <Page title="Page2" />
-        </Route>
-        <Route path="/Page3">
-          <Page title="Page3" />
-        </Route>
-        <Route path="/Page4">
-          <Page title="Page4" />
-        </Route>
-      </main>
-    </Router>
-  )
+const MyDrawer = ({ variant, open, onClose, onItemClick }) => (
+  <Router history={history}>
+    <Drawer variant={variant} open={open} onClose={onClose}>
+      <List>
+        <ListItem button component={Link} to="/" onClick={onItemClick()}>
+          <ListItemText>Home</ListItemText>
+        </ListItem>
+        <ListItem button component={Link} to="/Page1" onClick={onItemClick()}>
+          <ListItemText>PC管理台帳</ListItemText>
+        </ListItem>
+        <ListItem button component={Link} to="/Page2" onClick={onItemClick()}>
+          <ListItemText>PC持出台帳</ListItemText>
+        </ListItem>
+        <ListItem button component={Link} to="/Page3" onClick={onItemClick()}>
+          <ListItemText>ポータブルストレージ管理台帳</ListItemText>
+        </ListItem>
+        <ListItem button component={Link} to="/Page4" onClick={onItemClick()}>
+          <ListItemText>ユーザ管理</ListItemText>
+        </ListItem>
+      </List>
+    </Drawer>
+    <Switch>
+      <Route exact path="/">
+        <Home />
+      </Route>
+      <Route path="/Page1">
+        <Page title="Page1" />
+      </Route>
+      <Route path="/Page2">
+        <Page title="Page2" />
+      </Route>
+      <Route path="/Page3">
+        <Page title="Page3" />
+      </Route>
+      <Route path="/Page4">
+        <Page title="Page4" />
+      </Route>
+    </Switch>
+  </Router>
 );
 
 function AppBarInteraction({ classes, variant }) {
