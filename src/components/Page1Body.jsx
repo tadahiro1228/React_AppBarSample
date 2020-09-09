@@ -2,52 +2,75 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import AppBar from "@material-ui/core/AppBar";
+import Tabs from "@material-ui/core/Tabs";
+import Tab from "@material-ui/core/Tab";
+import Box from "@material-ui/core/Box";
+import Typography from "@material-ui/core/Typography";
+import PropTypes from "prop-types";
 
-class Page1Body extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      inpVal1: "",
-      inpVal2: ""
-    };
-    this.onChange = this.onChange.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
-  }
+const TabPanel = (props) => {
+  const { children, value, index, ...other } = props;
 
-  onChange(e) {
-    this.setState({ inpVal1: e.target.value });
-  }
-  onSubmit(e) {
-    // this.setState({ inpVal2: e.target.value });
-    // e.preventDefault();
-  }
-  render() {
-    return (
-      <div>
-        <div className="Search">
-          This is Search Place!
-          <br />
-          <form onSubmit={this.onSubmit}>
-            {/* <p>{this.state.inpVal1}</p>
-            <p>{this.state.inpuVal2}</p> */}
-            {/* <input
-              type="text"
-              value={this.state.inpVal1}
-              onChange={this.onChange}
-            /> */}
-            <TextField id="standard-basic" label="Standard" />
-            <Button variant="contained" color="primary">
-              primary
-            </Button>
-            {/* <input type="submit" value="submit" /> */}
-            {/* <button onClick={this.onSubmit}>submit</button> */}
-          </form>
-        </div>
-        <hr />
-        <div className="Grid">This is Grid Place!</div>
-      </div>
-    );
-  }
+  return (
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`simple-tabpanel-${index}`}
+      aria-labelledby={`simple-tab-${index}`}
+      {...other}
+    >
+      {value === index && (
+        <Box p={3}>
+          <Typography>{children}</Typography>
+        </Box>
+      )}
+    </div>
+  );
+};
+TabPanel.propTypes = {
+  children: PropTypes.node,
+  index: PropTypes.any.isRequired,
+  value: PropTypes.any.isRequired
+};
+
+function allyProps(index) {
+  return {
+    id: `simple-tab-${index}`,
+    "aria-controls": `simple-tabpanel-${index}`
+  };
 }
+
+const Page1Body = () => {
+  const [valTabs, setValTabs] = React.useState(0);
+  const tabsChange = (evemt, newValue) => {
+    setValTabs(newValue);
+  };
+  return (
+    <div>
+      <div className="Search">
+        This is Search Place!
+        <br />
+      </div>
+      <hr />
+      <AppBar position="static">
+        <Tabs value={valTabs} onChange={tabsChange}>
+          <Tab label="Tab 1" {...allyProps(0)} />
+          <Tab label="Tab 2" {...allyProps(1)} />
+          <Tab label="Tab 3" {...allyProps(2)} />
+        </Tabs>
+      </AppBar>
+      <TabPanel value={valTabs} index={0}>
+        Tab 1
+      </TabPanel>
+      <TabPanel value={valTabs} index={1}>
+        Tab 2
+      </TabPanel>
+      <TabPanel value={valTabs} index={2}>
+        Tab 3
+      </TabPanel>
+    </div>
+  );
+};
 
 export default Page1Body;

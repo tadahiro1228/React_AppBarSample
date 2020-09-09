@@ -65,44 +65,25 @@ const MyToolbar = withStyles(styles)(({ classes, title, onMenuClick }) => (
 ));
 
 const MyDrawer = ({ variant, open, onClose, onItemClick }) => (
-  <Router history={history}>
-    <Drawer variant={variant} open={open} onClose={onClose}>
-      <List>
-        <ListItem button component={Link} to="/" onClick={onItemClick()}>
-          <ListItemText>Home</ListItemText>
-        </ListItem>
-        <ListItem button component={Link} to="/Page1" onClick={onItemClick()}>
-          <ListItemText>PC管理台帳</ListItemText>
-        </ListItem>
-        <ListItem button component={Link} to="/Page2" onClick={onItemClick()}>
-          <ListItemText>PC持出台帳</ListItemText>
-        </ListItem>
-        <ListItem button component={Link} to="/Page3" onClick={onItemClick()}>
-          <ListItemText>ポータブルストレージ管理台帳</ListItemText>
-        </ListItem>
-        <ListItem button component={Link} to="/Page4" onClick={onItemClick()}>
-          <ListItemText>ユーザ管理</ListItemText>
-        </ListItem>
-      </List>
-    </Drawer>
-    <Switch>
-      <Route exact path="/">
-        <Home />
-      </Route>
-      <Route path="/Page1">
-        <Page title="Page1" />
-      </Route>
-      <Route path="/Page2">
-        <Page title="Page2" />
-      </Route>
-      <Route path="/Page3">
-        <Page title="Page3" />
-      </Route>
-      <Route path="/Page4">
-        <Page title="Page4" />
-      </Route>
-    </Switch>
-  </Router>
+  <Drawer variant={variant} open={open} onClose={onClose}>
+    <List>
+      <ListItem button component={Link} to="/" onClick={onItemClick()}>
+        <ListItemText>Home</ListItemText>
+      </ListItem>
+      <ListItem button component={Link} to="/Page1" onClick={onItemClick()}>
+        <ListItemText>PC管理台帳</ListItemText>
+      </ListItem>
+      <ListItem button component={Link} to="/Page2" onClick={onItemClick()}>
+        <ListItemText>PC持出台帳</ListItemText>
+      </ListItem>
+      <ListItem button component={Link} to="/Page3" onClick={onItemClick()}>
+        <ListItemText>ポータブルストレージ管理台帳</ListItemText>
+      </ListItem>
+      <ListItem button component={Link} to="/Page4" onClick={onItemClick()}>
+        <ListItemText>ユーザ管理</ListItemText>
+      </ListItem>
+    </List>
+  </Drawer>
 );
 
 function AppBarInteraction({ classes, variant }) {
@@ -120,12 +101,31 @@ function AppBarInteraction({ classes, variant }) {
   return (
     <div className={classes.root}>
       <MyToolbar title="資産管理システム" onMenuClick={toggleDrawer} />
-      <MyDrawer
-        open={drawer}
-        onClose={toggleDrawer}
-        onItemClick={onItemClick}
-        variant={variant}
-      />
+      <Router history={history}>
+        <MyDrawer
+          open={drawer}
+          onClose={toggleDrawer}
+          onItemClick={onItemClick}
+          variant={variant}
+        />
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route path="/Page1">
+            <Page title="Page1" />
+          </Route>
+          <Route path="/Page2">
+            <Page title="Page2" />
+          </Route>
+          <Route path="/Page3">
+            <Page title="Page3" />
+          </Route>
+          <Route path="/Page4">
+            <Page title="Page4" />
+          </Route>
+        </Switch>
+      </Router>
     </div>
   );
 }
