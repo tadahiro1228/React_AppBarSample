@@ -1,13 +1,11 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import TextField from "@material-ui/core/TextField";
-import Button from "@material-ui/core/Button";
 import AppBar from "@material-ui/core/AppBar";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import PropTypes from "prop-types";
+import Button from "@material-ui/core/Button";
 
 const TabPanel = (props) => {
   const { children, value, index, ...other } = props;
@@ -41,6 +39,39 @@ function allyProps(index) {
   };
 }
 
+const Sheet1 = () => {
+  return (
+    <React.Fragment>
+      <p>This is Icons site</p>
+      <a href="https://material-ui.com/components/material-icons/">Go site</a>
+    </React.Fragment>
+  );
+};
+
+const ButtonList = () => {
+  return (
+    <React.Fragment>
+      <Button variant="contained">Default</Button>
+      <br />
+      <Button variant="contained" color="primary">
+        Primary
+      </Button>
+      <br />
+      <Button variant="contained" color="secondary">
+        Secondary
+      </Button>
+      <br />
+      <Button variant="contained" disabled>
+        Disabled
+      </Button>
+      <br />
+      <Button variant="contained" color="primary" href="#contained-buttons">
+        Link
+      </Button>
+    </React.Fragment>
+  );
+};
+
 const Page1Body = () => {
   const [valTabs, setValTabs] = React.useState(0);
   const tabsChange = (evemt, newValue) => {
@@ -49,8 +80,9 @@ const Page1Body = () => {
   return (
     <div>
       <div className="Search">
-        This is Search Place!
+        This is Button Place!
         <br />
+        <ButtonList />
       </div>
       <hr />
       <AppBar position="static">
@@ -61,7 +93,7 @@ const Page1Body = () => {
         </Tabs>
       </AppBar>
       <TabPanel value={valTabs} index={0}>
-        Tab 1
+        <Sheet1 />
       </TabPanel>
       <TabPanel value={valTabs} index={1}>
         Tab 2
