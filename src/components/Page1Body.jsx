@@ -36,8 +36,8 @@ TabPanel.propTypes = {
 
 function allyProps(index) {
   return {
-    id: `simple-tab-${index}`,
-    "aria-controls": `simple-tabpanel-${index}`
+    id: `full-width-tab-${index}`,
+    "aria-controls": `full-width-tabpanel-${index}`
   };
 }
 
@@ -54,7 +54,7 @@ const Page1Body = () => {
       </div>
       <hr />
       <AppBar position="static">
-        <Tabs value={valTabs} onChange={tabsChange}>
+        <Tabs value={valTabs} onChange={tabsChange} variant="fullWidth">
           <Tab label="Tab 1" {...allyProps(0)} />
           <Tab label="Tab 2" {...allyProps(1)} />
           <Tab label="Tab 3" {...allyProps(2)} />
