@@ -17,7 +17,7 @@ import {
   Home as HomeIcon,
   MenuBook as ListIcon,
   MeetingRoom as LogoutIcon,
-  Bathtub as UserIcon
+  SportsKabaddi as UserIcon
 } from "@material-ui/icons";
 
 import Home from "./pages/Home";
