@@ -1,11 +1,10 @@
 import React from "react";
-import AppBar from "@material-ui/core/AppBar";
-import Tabs from "@material-ui/core/Tabs";
-import Tab from "@material-ui/core/Tab";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import PropTypes from "prop-types";
 import Button from "@material-ui/core/Button";
+
+import TabBar from "./TabBar";
 
 const TabPanel = (props) => {
   const { children, value, index, ...other } = props;
@@ -42,7 +41,9 @@ function allyProps(index) {
 const Sheet1 = () => {
   return (
     <React.Fragment>
-      <p>This is Icons site</p>
+      <div>
+        <p>This is Icons site</p>
+      </div>
       <a href="https://material-ui.com/components/material-icons/">Go site</a>
     </React.Fragment>
   );
@@ -51,6 +52,7 @@ const Sheet1 = () => {
 const ButtonList = () => {
   return (
     <React.Fragment>
+      <h5>- Button -</h5>
       <Button variant="contained">Default</Button>
       <br />
       <Button variant="contained" color="primary">
@@ -72,6 +74,21 @@ const ButtonList = () => {
   );
 };
 
+// const TabBar = ({ value, onChange }) => {
+//   return (
+//     <React.Fragment>
+//       <h5>- Tab -</h5>
+//       <AppBar position="static">
+//         <Tabs value={value} onChange={onChange} variant="fullWidth">
+//           <Tab label="Tab 1" {...allyProps(0)} />
+//           <Tab label="Tab 2" {...allyProps(1)} />
+//           <Tab label="Tab 3" {...allyProps(2)} />
+//         </Tabs>
+//       </AppBar>
+//     </React.Fragment>
+//   );
+// };
+
 const Page1Body = () => {
   const [valTabs, setValTabs] = React.useState(0);
   const tabsChange = (evemt, newValue) => {
@@ -80,18 +97,10 @@ const Page1Body = () => {
   return (
     <div>
       <div className="Search">
-        This is Button Place!
-        <br />
         <ButtonList />
       </div>
       <hr />
-      <AppBar position="static">
-        <Tabs value={valTabs} onChange={tabsChange} variant="fullWidth">
-          <Tab label="Tab 1" {...allyProps(0)} />
-          <Tab label="Tab 2" {...allyProps(1)} />
-          <Tab label="Tab 3" {...allyProps(2)} />
-        </Tabs>
-      </AppBar>
+      <TabBar value={valTabs} onChange={tabsChange} />
       <TabPanel value={valTabs} index={0}>
         <Sheet1 />
       </TabPanel>

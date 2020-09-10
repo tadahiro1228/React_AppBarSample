@@ -33,9 +33,9 @@ class Page extends React.Component {
   }
 }
 
-Page.propTypes = {
-  title: PropTypes.string.isRequored,
-  val: PropTypes.string.isRequired
-};
+// Page.propTypes = {
+//   title: PropTypes.string.isRequored,
+//   val: PropTypes.string.isRequired
+// };
 
 export default Page;
