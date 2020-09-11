@@ -1,5 +1,5 @@
 import React, { useState, Fragment } from "react";
-import clsx from "clsx";
+// import clsx from "clsx";
 import { Router, Route, Link, Switch } from "react-router-dom";
 import { createBrowserHistory } from "history";
 import { withStyles } from "@material-ui/core/styles";
@@ -20,8 +20,7 @@ import {
   SportsKabaddi as UserIcon
 } from "@material-ui/icons";
 
-import Home from "./pages/Home";
-import Page from "./pages/Page";
+import PageCon from "./controller/PageController";
 
 const drawerWidth = 280;
 const history = createBrowserHistory();
@@ -136,19 +135,19 @@ function AppBarInteraction({ classes, variant }) {
         />
         <Switch>
           <Route exact path="/">
-            <Home />
+            <PageCon title="Home" />
           </Route>
           <Route path="/Page1">
-            <Page title="Page1" />
+            <PageCon title="Page1" />
           </Route>
           <Route path="/Page2">
-            <Page title="Page2" />
+            <PageCon title="Page2" />
           </Route>
           <Route path="/Page3">
-            <Page title="Page3" />
+            <PageCon title="Page3" />
           </Route>
           <Route path="/Page4">
-            <Page title="Page4" />
+            <PageCon title="Page4" />
           </Route>
         </Switch>
       </Router>

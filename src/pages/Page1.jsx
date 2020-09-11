@@ -1,41 +1,67 @@
 import React from "react";
-import PropTypes from "prop-types";
+import Button from "@material-ui/core/Button";
 
-import "../styles.css";
+import TabBar from "../components/TabBar";
+import TabPanel from "../components/TabPanel";
 
-import Page1Body from "../components/Page1Body";
-
-function chkPropsTitle(title) {
-  if (title == null) {
-    title = "null";
-  }
-  return title;
-}
-
-function Body(Pg) {
-  let body;
-  if (Pg === "Page1") {
-    body = <Page1Body />;
-  } else {
-    body = <p>This Page is not created!</p>;
-  }
-  return body;
-}
-
-class Page extends React.Component {
-  render() {
-    return (
-      <div>
-        <h1>This is {chkPropsTitle(this.props.title)}</h1>
-        <div className="Body">{Body(this.props.title)}</div>
-      </div>
-    );
-  }
-}
-
-Page.propTypes = {
-  title: PropTypes.string.isRequored,
-  val: PropTypes.string.isRequired
+const Sheet1 = () => {
+  return (
+    <div>
+      This is Icons site
+      <br />
+      <a href="https://material-ui.com/components/material-icons/">Go site</a>
+    </div>
+  );
 };
 
-export default Page;
+const ButtonList = () => {
+  return (
+    <React.Fragment>
+      <h5>- Button -</h5>
+      <Button variant="contained">Default</Button>
+      <br />
+      <Button variant="contained" color="primary">
+        Primary
+      </Button>
+      <br />
+      <Button variant="contained" color="secondary">
+        Secondary
+      </Button>
+      <br />
+      <Button variant="contained" disabled>
+        Disabled
+      </Button>
+      <br />
+      <Button variant="contained" color="primary" href="#contained-buttons">
+        Link
+      </Button>
+    </React.Fragment>
+  );
+};
+
+const Page1Body = () => {
+  const [valTabs, setValTabs] = React.useState(0);
+  const tabsChange = (evemt, newValue) => {
+    setValTabs(newValue);
+  };
+  return (
+    <div>
+      <div className="Search">
+        <ButtonList />
+      </div>
+      <hr />
+      <TabBar value={valTabs} onChange={tabsChange} />
+      <TabPanel value={valTabs} index={0}>
+        <Sheet1 />
+      </TabPanel>
+      <TabPanel value={valTabs} index={1}>
+        Tab 2
+      </TabPanel>
+      <TabPanel value={valTabs} index={2}>
+        Tab 3
+      </TabPanel>
+    </div>
+  );
+};
+
+export default Page1Body;

@@ -2,7 +2,8 @@ import React from "react";
 
 import "../styles.css";
 
-import Page1Body from "../components/Page1Body";
+import Home from "../pages/Home";
+import Page1 from "../pages/Page1";
 
 function chkPropsTitle(title) {
   if (title == null) {
@@ -13,8 +14,10 @@ function chkPropsTitle(title) {
 
 function Body(Pg) {
   let body;
-  if (Pg === "Page1") {
-    body = <Page1Body />;
+  if (Pg === "Home") {
+    body = <Home />;
+  } else if (Pg === "Page1") {
+    body = <Page1 />;
   } else {
     body = <p>This Page is not created!</p>;
   }
