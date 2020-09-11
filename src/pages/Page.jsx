@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 
 import "../styles.css";
 
@@ -32,10 +31,5 @@ class Page extends React.Component {
     );
   }
 }
-
-Page.propTypes = {
-  title: PropTypes.string.isRequored,
-  val: PropTypes.string.isRequired
-};
 
 export default Page;
