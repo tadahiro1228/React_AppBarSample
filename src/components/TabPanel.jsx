@@ -22,6 +22,9 @@ const TabPanel = (props) => {
     </div>
   );
 };
+
+// 渡される引数 children, index, value の
+// データ型をチェック
 TabPanel.propTypes = {
   children: PropTypes.node,
   index: PropTypes.any.isRequired,

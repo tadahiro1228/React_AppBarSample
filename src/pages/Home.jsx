@@ -1,5 +1,6 @@
 import React from "react";
 
+// Homeページ
 function Home() {
   return <div>Notice is Nothing!</div>;
 }

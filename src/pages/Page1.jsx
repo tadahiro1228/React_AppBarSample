@@ -4,6 +4,7 @@ import Button from "@material-ui/core/Button";
 import TabBar from "../components/TabBar";
 import TabPanel from "../components/TabPanel";
 
+// Tab シート1
 const Sheet1 = () => {
   return (
     <div>
@@ -14,6 +15,7 @@ const Sheet1 = () => {
   );
 };
 
+// ButtonList コンポーネント
 const ButtonList = () => {
   return (
     <React.Fragment>
@@ -40,7 +42,10 @@ const ButtonList = () => {
 };
 
 const Page1Body = () => {
+  // 状態管理変数
   const [valTabs, setValTabs] = React.useState(0);
+
+  // Tab遷移時処理
   const tabsChange = (evemt, newValue) => {
     setValTabs(newValue);
   };

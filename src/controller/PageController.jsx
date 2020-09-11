@@ -1,27 +1,36 @@
 import React from "react";
 
+// style(デザイン)
 import "../styles.css";
 
+// 遷移ページ
 import Home from "../pages/Home";
 import Page1 from "../pages/Page1";
+import Page2 from "../pages/Page2";
 
+// App.js から渡された title が
+// null, undefined, 空文字, false の場合
+// 文字列"null"を設定する。
 function chkPropsTitle(title) {
-  if (title == null) {
+  if (!title) {
     title = "null";
   }
   return title;
 }
 
+// App.js から渡された title で
+// どのページを表示するか判定
 function Body(Pg) {
-  let body;
-  if (Pg === "Home") {
-    body = <Home />;
-  } else if (Pg === "Page1") {
-    body = <Page1 />;
-  } else {
-    body = <p>This Page is not created!</p>;
+  switch (Pg) {
+    case "Home":
+      return <Home />;
+    case "Page1":
+      return <Page1 />;
+    case "Page2":
+      return <Page2 />;
+    default:
+      return <p>This Page is not created!</p>;
   }
-  return body;
 }
 
 class Page extends React.Component {
