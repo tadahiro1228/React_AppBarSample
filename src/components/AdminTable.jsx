@@ -1,5 +1,5 @@
 import React from "react";
-import { List, Datagrid, TextField } from "react-admin";
+import { List, Datagrid, TextField, EditButton } from "react-admin";
 import { BulkDeleteButton } from "react-admin";
 
 import ResetViewsButton from "./AdminTableComp/ResetViewsButton";
@@ -32,6 +32,7 @@ const AdminTable = (props) => (
       // aside={<SideFilter />}
     >
       <Datagrid>
+        <EditButton />
         <TextField source="id" />
         <TextField source="name" />
         <TextField source="username" />
