@@ -54,7 +54,7 @@ const MuiDatatable = () => {
       <div>
         MuiDatatable( Material-UI Datatable ) を使った表
         <br />
-        1番シンプル？
+        1番シンプル？（編集が出来ない？)
       </div>
       <MUIDataTable
         title={"Employee List"}
