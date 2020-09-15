@@ -1,7 +1,40 @@
 import React from "react";
 import MUIDataTable from "mui-datatables";
 
-const columns = ["Name", "Company", "City", "State"];
+const columns = [
+  {
+    name: "Name",
+    label: "Name",
+    options: { filter: true, filterType: "textField", sort: true }
+  },
+  {
+    name: "Company",
+    label: "Company",
+    options: {
+      filter: true,
+      filterType: "dropdown",
+      sort: true
+    }
+  },
+  {
+    name: "City",
+    label: "City",
+    options: {
+      filter: true,
+      filterType: "multiselect",
+      sort: true
+    }
+  },
+  {
+    name: "State",
+    label: "State",
+    options: {
+      filter: true,
+      filterType: "checkbox",
+      sort: true
+    }
+  }
+];
 
 const data = [
   ["Joe James", "Test Corp", "Yonkers", "NY"],
@@ -10,8 +43,9 @@ const data = [
   ["James Houston", "Test Corp", "Dallas", "TX"]
 ];
 
-const options = {
-  filterType: "checkbox"
+const option = {
+  search: false,
+  print: false
 };
 
 const MuiDatatable = () => {
@@ -26,7 +60,7 @@ const MuiDatatable = () => {
         title={"Employee List"}
         data={data}
         columns={columns}
-        options={options}
+        options={option}
       />
     </div>
   );
