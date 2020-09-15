@@ -7,6 +7,7 @@ import "../styles.css";
 import Home from "../pages/Home";
 import Page1 from "../pages/Page1";
 import Page2 from "../pages/Page2";
+import Page3 from "../pages/Page3";
 
 // App.js から渡された title が
 // null, undefined, 空文字, false の場合
@@ -28,6 +29,8 @@ function Body(Pg) {
       return <Page1 />;
     case "Page2":
       return <Page2 />;
+    case "Page3":
+      return <Page3 />;
     default:
       return <p>This Page is not created!</p>;
   }
