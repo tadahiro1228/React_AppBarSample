@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 // import clsx from "clsx";
-import { Router, Route, Switch } from "react-router-dom";
+import { Router, Route, Switch, Redirect } from "react-router-dom";
 import { createBrowserHistory } from "history";
 import { withStyles } from "@material-ui/core/styles";
 import PageCon from "./controller/PageController";
 import SignIn from "./pages/SignIn";
 import MyToolbar from "./components/Menu";
 import MyDrawer from "./components/MenuList";
-import Button from "@material-ui/core/Button";
 
 const history = createBrowserHistory();
 
@@ -46,9 +45,6 @@ function AppBarInteraction({ classes, variant }) {
         auth={auth}
         onLogOutClick={LogOut}
       />
-      {auth
-        ? this.context.router.replaceWith("/")
-        : this.context.router.replaceWith("/login")}
       <Router history={history}>
         <MyDrawer
           open={drawer}
@@ -76,9 +72,10 @@ function AppBarInteraction({ classes, variant }) {
             <SignIn onClick={Login} />
           </Route>
         </Switch>
+        {auth ? "" : <Redirect to="/login" />}
       </Router>
-      {auth ? <p>Login now</p> : <p>Logout now</p>}
-      <Button onClick={Login}>Login</Button>
+      {/* {auth ? <p>Login now</p> : <p>Logout now</p>}
+      <Button onClick={Login}>Login</Button> */}
     </div>
   );
 }
