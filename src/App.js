@@ -31,6 +31,7 @@ function AppBarInteraction({ classes, variant }) {
 
   const Login = () => {
     setAuth(true);
+    // <Redirect to="/" />;
   };
 
   const LogOut = () => {
@@ -72,7 +73,7 @@ function AppBarInteraction({ classes, variant }) {
             <SignIn onClick={Login} />
           </Route>
         </Switch>
-        {auth ? "" : <Redirect to="/login" />}
+        {auth ? <Redirect to="/" /> : <Redirect to="/login" />}
       </Router>
       {/* {auth ? <p>Login now</p> : <p>Logout now</p>}
       <Button onClick={Login}>Login</Button> */}

@@ -6,7 +6,7 @@ const SignIn = ({ onClick }) => {
     <React.Fragment>
       <p>Sign Out Now!</p>
       <Button variant="contained" color="primary" onClick={onClick}>
-        SignIn?
+        Sign In?
       </Button>
     </React.Fragment>
   );
