@@ -26,32 +26,39 @@ const styles = (theme) => ({
   }
 });
 
-const MyToolbar = withStyles(styles)(({ classes, title, onMenuClick }) => (
-  <React.Fragment>
-    <AppBar className={classes.aboveDrawer}>
-      <Toolbar>
-        <IconButton
-          className={classes.menuButton}
-          color="inherit"
-          aria-label="Menu"
-          onClick={onMenuClick}
-        >
-          <MenuIcon />
-        </IconButton>
-        <Typography variant="h6" color="inherit" className={classes.flex}>
-          {title}
-        </Typography>
-        <IconButton
-          className={classes.logoutButton}
-          color="inherit"
-          aria-label="Logout"
-        >
-          <LogoutIcon />
-        </IconButton>
-      </Toolbar>
-    </AppBar>
-    <div className={classes.toolbarMargin} />
-  </React.Fragment>
-));
+const MyToolbar = withStyles(styles)(
+  ({ classes, title, onMenuClick, auth, onLogOutClick }) => (
+    <React.Fragment>
+      <AppBar className={classes.aboveDrawer}>
+        <Toolbar>
+          {auth ? (
+            <IconButton
+              className={classes.menuButton}
+              color="inherit"
+              aria-label="Menu"
+              onClick={onMenuClick}
+            >
+              <MenuIcon />
+            </IconButton>
+          ) : (
+            ""
+          )}
+          <Typography variant="h6" color="inherit" className={classes.flex}>
+            {title}
+          </Typography>
+          <IconButton
+            className={classes.logoutButton}
+            color="inherit"
+            aria-label="Logout"
+            onClick={onLogOutClick}
+          >
+            <LogoutIcon />
+          </IconButton>
+        </Toolbar>
+      </AppBar>
+      <div className={classes.toolbarMargin} />
+    </React.Fragment>
+  )
+);
 
 export default MyToolbar;
