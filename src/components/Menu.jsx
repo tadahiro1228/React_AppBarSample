@@ -46,14 +46,18 @@ const MyToolbar = withStyles(styles)(
           <Typography variant="h6" color="inherit" className={classes.flex}>
             {title}
           </Typography>
-          <IconButton
-            className={classes.logoutButton}
-            color="inherit"
-            aria-label="Logout"
-            onClick={onLogOutClick}
-          >
-            <LogoutIcon />
-          </IconButton>
+          {auth ? (
+            <IconButton
+              className={classes.logoutButton}
+              color="inherit"
+              aria-label="Logout"
+              onClick={onLogOutClick}
+            >
+              <LogoutIcon />
+            </IconButton>
+          ) : (
+            ""
+          )}
         </Toolbar>
       </AppBar>
       <div className={classes.toolbarMargin} />
