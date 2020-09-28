@@ -37,10 +37,10 @@ const columns = [
   }
 ];
 const data = [
-  ["Joe James", "Test Corp", "Yonkers", "NY"],
-  ["John Walsh", "Test Corp", "Hartford", "CT"],
-  ["Bob Herm", "Test Corp", "Tampa", "FL"],
-  ["James Houston", "Test Corp", "Dallas", "TX"]
+  ["Joe James", "Test Corp", "Yonkers", "NY", "0"],
+  ["John Walsh", "Test Corp", "Hartford", "CT", "0"],
+  ["Bob Herm", "Test Corp", "Tampa", "FL", "1"],
+  ["James Houston", "Test Corp", "Dallas", "TX", "1"]
 ];
 
 const option = {
@@ -61,17 +61,17 @@ const option = {
   onRowClick: (rowData, rowState) => {
     window.confirm(rowData, rowState);
   },
-  onRowsSelect: (curRowSelected, allRowsSelected) => {
-    console.log("---RowSelect");
-    console.log("Row Selected: ", curRowSelected);
-    console.log("All Selected: ", allRowsSelected);
-  },
+  // onRowsSelect: (curRowSelected, allRowsSelected) => {
+  //   console.log("---RowSelect");
+  //   console.log("Row Selected: ", curRowSelected);
+  //   console.log("All Selected: ", allRowsSelected);
+  // },
   selectableRowsonClick: true,
   selectableRowsHeader: false,
   customRowRender: (data, dataIndex, rowIndex) => {
     let style = {};
-    if (data[0] === "John Walsh") {
-      style.backgroundColor = "green";
+    if (data[4] === "1") {
+      style.backgroundColor = "#a9a9a9";
     }
     return (
       <TableRow style={style}>
