@@ -45,7 +45,22 @@ const data = [
 
 const option = {
   search: false,
-  print: false
+  print: false,
+  downloadOptions: {
+    useDisplayedRowsOnly: true
+  },
+  onRowsDelete: false,
+  onDownload: (buildHead, buildBody, columns, data) => {
+    var result = window.confirm("CSVを出力します。よろしいですか？");
+    if (result) {
+      return "\uFEFF" + buildHead(columns) + buildBody(data);
+    } else {
+      return false;
+    }
+  },
+  onRowClick: (rowData, rowState) => {
+    window.confirm(rowData, rowState);
+  }
 };
 
 const MuiDatatable = () => {
