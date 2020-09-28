@@ -1,5 +1,6 @@
 import React from "react";
 import MUIDataTable from "mui-datatables";
+import { TableRow, TableCell, Typography } from "@material-ui/core";
 
 const columns = [
   {
@@ -36,10 +37,10 @@ const columns = [
   }
 ];
 const data = [
-  [<button>Update</button>, "Joe James", "Test Corp", "Yonkers", "NY"],
-  [<button>Update</button>, "John Walsh", "Test Corp", "Hartford", "CT"],
-  [<button>Update</button>, "Bob Herm", "Test Corp", "Tampa", "FL"],
-  [<button>Update</button>, "James Houston", "Test Corp", "Dallas", "TX"]
+  ["Joe James", "Test Corp", "Yonkers", "NY"],
+  ["John Walsh", "Test Corp", "Hartford", "CT"],
+  ["Bob Herm", "Test Corp", "Tampa", "FL"],
+  ["James Houston", "Test Corp", "Dallas", "TX"]
 ];
 
 const option = {
@@ -65,8 +66,31 @@ const option = {
     console.log("Row Selected: ", curRowSelected);
     console.log("All Selected: ", allRowsSelected);
   },
-  // selectableRows: false,
-  selectableRowsHeader: false
+  selectableRowsonClick: true,
+  selectableRowsHeader: false,
+  customRowRender: (data, dataIndex, rowIndex) => {
+    let style = {};
+    if (data[0] === "John Walsh") {
+      style.backgroundColor = "green";
+    }
+    return (
+      <TableRow style={style}>
+        <TableCell />
+        <TableCell>
+          <Typography>{data[0]}</Typography>
+        </TableCell>
+        <TableCell>
+          <Typography>{data[1]}</Typography>
+        </TableCell>
+        <TableCell>
+          <Typography>{data[2]}</Typography>
+        </TableCell>
+        <TableCell>
+          <Typography>{data[3]}</Typography>
+        </TableCell>
+      </TableRow>
+    );
+  }
 };
 
 const MuiDatatable = () => {
