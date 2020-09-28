@@ -35,12 +35,11 @@ const columns = [
     }
   }
 ];
-
 const data = [
-  ["Joe James", "Test Corp", "Yonkers", "NY"],
-  ["John Walsh", "Test Corp", "Hartford", "CT"],
-  ["Bob Herm", "Test Corp", "Tampa", "FL"],
-  ["James Houston", "Test Corp", "Dallas", "TX"]
+  [<button>Update</button>, "Joe James", "Test Corp", "Yonkers", "NY"],
+  [<button>Update</button>, "John Walsh", "Test Corp", "Hartford", "CT"],
+  [<button>Update</button>, "Bob Herm", "Test Corp", "Tampa", "FL"],
+  [<button>Update</button>, "James Houston", "Test Corp", "Dallas", "TX"]
 ];
 
 const option = {
@@ -60,7 +59,14 @@ const option = {
   },
   onRowClick: (rowData, rowState) => {
     window.confirm(rowData, rowState);
-  }
+  },
+  onRowsSelect: (curRowSelected, allRowsSelected) => {
+    console.log("---RowSelect");
+    console.log("Row Selected: ", curRowSelected);
+    console.log("All Selected: ", allRowsSelected);
+  },
+  // selectableRows: false,
+  selectableRowsHeader: false
 };
 
 const MuiDatatable = () => {
