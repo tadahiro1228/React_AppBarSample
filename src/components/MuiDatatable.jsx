@@ -1,6 +1,6 @@
 import React from "react";
 import MUIDataTable from "mui-datatables";
-import { TableRow, TableCell, Typography } from "@material-ui/core";
+// import { TableRow, TableCell, Typography } from "@material-ui/core";
 
 const columns = [
   {
@@ -34,6 +34,15 @@ const columns = [
       filterType: "checkbox",
       sort: true
     }
+  },
+  {
+    name: "DeleteFlag",
+    label: "DeleteFlag",
+    options: {
+      display: "excluded",
+      filter: true,
+      filterType: "checkbox"
+    }
   }
 ];
 const data = [
@@ -58,38 +67,22 @@ const option = {
       return false;
     }
   },
-  onRowClick: (rowData, rowState) => {
-    window.confirm(rowData, rowState);
-  },
-  // onRowsSelect: (curRowSelected, allRowsSelected) => {
-  //   console.log("---RowSelect");
-  //   console.log("Row Selected: ", curRowSelected);
-  //   console.log("All Selected: ", allRowsSelected);
-  // },
+  //onRowClick: (rowData, rowState) => {
+  //  window.confirm(rowData, rowState);
+  //},
   selectableRowsonClick: true,
   selectableRowsHeader: false,
-  customRowRender: (data, dataIndex, rowIndex) => {
-    let style = {};
-    if (data[4] === "1") {
-      style.backgroundColor = "#a9a9a9";
+  setRowProps: (row) => {
+    if (row[4] === "1") {
+      return { style: { background: "#a9a9a9" } };
     }
-    return (
-      <TableRow style={style}>
-        <TableCell />
-        <TableCell>
-          <Typography>{data[0]}</Typography>
-        </TableCell>
-        <TableCell>
-          <Typography>{data[1]}</Typography>
-        </TableCell>
-        <TableCell>
-          <Typography>{data[2]}</Typography>
-        </TableCell>
-        <TableCell>
-          <Typography>{data[3]}</Typography>
-        </TableCell>
-      </TableRow>
-    );
+  },
+  onRowsSelect: (currentRowsSelected, allRowsSelected) => {
+    let selectedItems = allRowsSelected.map((item) => {
+      // let selectedDatas = item.map((data) => [data.index])
+      return data[item.index];
+    });
+    window.confirm(selectedItems);
   }
 };
 
