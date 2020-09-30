@@ -1,7 +1,7 @@
 import React from "react";
 import MUIDataTable from "mui-datatables";
-// import { TableRow, TableCell, Typography } from "@material-ui/core";
 
+//列の設定
 const columns = [
   {
     name: "Name",
@@ -45,6 +45,9 @@ const columns = [
     }
   }
 ];
+
+//表示するデータ
+//実際はDBから取得する事になる想定
 const data = [
   ["Joe James", "Test Corp", "Yonkers", "NY", "0"],
   ["John Walsh", "Test Corp", "Hartford", "CT", "0"],
@@ -52,6 +55,19 @@ const data = [
   ["James Houston", "Test Corp", "Dallas", "TX", "1"]
 ];
 
+/*
+【表の設定】
+search                ：検索フォームの有効化/無効化
+print                 ：印刷ボタンの有効化/無効化
+downloadOptions       ：CSV出力時の設定
+  useDisplayRowsOnly  ：(ﾌｨﾙﾀ有効時等に)表示データのみ出力するかどうか
+onRowsDelete          ：行削除ボタン有効化/無効化
+onDownload            ：CSV出力処理(関数)
+selectableRowsonClick ：
+selectableRowsHeader  ：ﾍｯﾀﾞの全選択ﾁｪｯｸﾎﾞｯｸｽ 表示/非表示制御
+setRowProps           ：行ﾚﾝﾀﾞ時の制御
+onRowSelect           ：ﾁｪｯｸﾎﾞｯｸｽ選択時処理(関数)
+*/
 const option = {
   search: false,
   print: false,
@@ -67,9 +83,6 @@ const option = {
       return false;
     }
   },
-  //onRowClick: (rowData, rowState) => {
-  //  window.confirm(rowData, rowState);
-  //},
   selectableRowsonClick: true,
   selectableRowsHeader: false,
   setRowProps: (row) => {
@@ -82,7 +95,9 @@ const option = {
       // let selectedDatas = item.map((data) => [data.index])
       return data[item.index];
     });
-    window.confirm(selectedItems);
+    if (selectedItems.length > 0) {
+      window.confirm(selectedItems);
+    }
   }
 };
 

@@ -9,6 +9,9 @@ import {
   MeetingRoom as LogoutIcon
 } from "@material-ui/icons";
 
+//AppBar ｺﾝﾎﾟｰﾈﾝﾄ
+
+//ｽﾀｲﾙ(ﾃﾞｻﾞｲﾝ)の設定
 const styles = (theme) => ({
   root: {
     flexGrow: 1
@@ -26,11 +29,19 @@ const styles = (theme) => ({
   }
 });
 
+//表示内容の定義
 const MyToolbar = withStyles(styles)(
   ({ classes, title, onMenuClick, auth, onLogOutClick }) => (
     <React.Fragment>
       <AppBar className={classes.aboveDrawer}>
         <Toolbar>
+          {/*
+           auth：ﾛｸﾞｲﾝ状態
+           
+           ﾒﾆｭｰｱｲｺﾝを表示/非表示制御する
+           true ：表示
+           false：非表示
+          */}
           {auth ? (
             <IconButton
               className={classes.menuButton}
@@ -46,6 +57,13 @@ const MyToolbar = withStyles(styles)(
           <Typography variant="h6" color="inherit" className={classes.flex}>
             {title}
           </Typography>
+          {/*
+           auth：ﾛｸﾞｲﾝ状態
+           
+           ﾛｸﾞｱｳﾄｱｲｺﾝを表示/非表示制御する
+           true ：表示
+           false：非表示
+          */}
           {auth ? (
             <IconButton
               className={classes.logoutButton}
