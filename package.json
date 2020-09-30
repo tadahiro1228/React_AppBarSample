@@ -12,12 +12,9 @@
     "@material-ui/styles": "4.10.0",
     "@material-ui/system": "4.9.14",
     "@material-ui/utils": "4.10.2",
-    "handsontable": "8.0.0",
     "mui-datatables": "3.4.1",
     "ra-data-json-server": "3.8.4",
     "react": "16.13.1",
-    "react-admin": "3.8.4",
-    "react-dom": "16.13.1",
     "react-router-dom": "5.2.0",
     "react-scripts": "3.4.3",
     "react-spring": "8.0.27"
